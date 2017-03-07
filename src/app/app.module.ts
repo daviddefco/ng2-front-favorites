@@ -4,17 +4,22 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { FavoriteListComponent } from './favorites/favorite-list/favorite-list.component';
+
+import { AlertModule } from 'ng2-bootstrap/alert'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FavoriteListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AlertModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent, FavoriteListComponent ]
 })
 export class AppModule { }
