@@ -1,3 +1,25 @@
 <h3>
   {{ title }}
 </h3>
+
+<ul class="list-group">
+  <li *ngFor="let favorite of favorites" class="list-group-item">
+    <h4>{{ favorite.title }}</h4>
+    <p>{{ favorite.url }}</p>
+    <p>{{ favorite.description }}</p>
+    <div class="btn-group" role="group">
+      <a type="button" class="btn btn-default" href="{{ favorite.url }}" target="_blank">
+        <i class="glyphicon glyphicon-link"></i>
+      </a>
+      <a type="button" class="btn btn-default" [routerLink]="[ '/bookmark', favorite._id ]">
+        <i class="glyphicon glyphicon-eye-open"></i>
+      </a>
+      <a type="button" class="btn btn-default">
+        <i class="glyphicon glyphicon-pencil"></i>
+      </a>
+      <a type="button" class="btn btn-danger">
+        <i class="glyphicon glyphicon-trash"></i>
+      </a>
+    </div>
+  </li>
+</ul>

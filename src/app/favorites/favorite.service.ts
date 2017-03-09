@@ -17,4 +17,9 @@ export class FavoriteService {
     return this._http.get(this.urlRestfulApi)
       .map(res => res.json())
   }
+
+  getFavorito(id:string) {
+    return this._http.get(this.urlRestfulApi + '/' + id)
+      .map(res => res.json()) 
+  }
 }
