@@ -6,7 +6,9 @@ export class ErrorHandlingService {
   constructor() { }
 
   printRequestError(message: string) {
-    console.warn(message)
-    alert('Request could not be completed. See logs')
+    if(message) {
+      console.warn(message)
+      alert('Request could not be completed. See logs')
+    }  
   }
 }

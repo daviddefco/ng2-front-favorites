@@ -1,3 +1,10 @@
-<p>
-  favorite-detail works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{ favorite?.title }}</h3>
+  </div>
+  <div class="panel-body">
+    <p>{{ favorite?.description }}</p>
+    <p>{{ favorite?.url }}</p>
+    <div class="well">{{ favorite?._id }}</div>
+  </div>
+</div>

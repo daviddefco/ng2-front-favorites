@@ -25,10 +25,12 @@ import { ErrorHandlingService } from './shared/error-handling.service'
     AlertModule.forRoot(),
     routing
   ],
-  providers: [ appRoutingProviders ],
-  bootstrap: [ 
-    AppComponent,
+  providers: [ 
+    appRoutingProviders,
     ErrorHandlingService
-   ]
+  ],
+  bootstrap: [ 
+    AppComponent    
+  ]
 })
 export class AppModule { }

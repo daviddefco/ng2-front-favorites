@@ -32,8 +32,7 @@ export class FavoriteListComponent implements OnInit {
           this.favorites = result.result
         },
         error => {
-          console.log(error)
-          alert('Request could not be completed. See logs')
+          this._errorHandler.printRequestError(error)
         }
       )
   }
