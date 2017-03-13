@@ -2,7 +2,9 @@
   {{ title }}
 </h3>
 
-<ul class="list-group">
+<app-spinner *ngIf="!visible"></app-spinner>
+
+<ul *ngIf="visible" class="list-group">
   <li *ngFor="let favorite of favorites" class="list-group-item">
     <h4>{{ favorite.title }}</h4>
     <p>{{ favorite.url }}</p>

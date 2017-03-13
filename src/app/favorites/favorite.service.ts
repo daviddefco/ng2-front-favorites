@@ -22,4 +22,15 @@ export class FavoriteService {
     return this._http.get(this.urlRestfulApi + '/' + id)
       .map(res => res.json()) 
   }
+
+  addFavorite(favorite: Favorite) {
+    // POST requests have to attach JSON sring
+    let json = JSON.stringify(favorite)
+    let headers: Headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+    return this._http.post(this.urlRestfulApi, json, { headers: headers })
+      .map(response => {
+        response.json()
+      })
+  }
 }

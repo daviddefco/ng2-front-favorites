@@ -1,4 +1,5 @@
-<div class="panel panel-default">
+<app-spinner *ngIf="!visible"></app-spinner>
+<div *ngIf="visible" class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">{{ favorite?.title }}</h3>
   </div>

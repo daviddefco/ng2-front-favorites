@@ -16,20 +16,26 @@ export class FavoriteListComponent implements OnInit {
   
   public title: string
   public favorites: [ Favorite ]
+  public visible: boolean
 
   constructor(
     private _favoriteService: FavoriteService,
     private _errorHandler: ErrorHandlingService 
   ) { 
     this.title = 'Favorite Bookmark List'
+    this.visible = false
   }
 
   ngOnInit() {
     this._favoriteService.getFavoritos()
       .subscribe(
         result => {
-          console.log(result)
-          this.favorites = result.result
+           // simulation of a slow interaction to show slider
+          setTimeout(() => {
+            console.log(result)
+            this.favorites = result.result
+            this.visible =  true
+          }, 1500)  
         },
         error => {
           this._errorHandler.printRequestError(error)
