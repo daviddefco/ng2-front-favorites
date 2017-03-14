@@ -32,12 +32,14 @@ export class FavoriteAddComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Entra en on submit')
-    console.log(this.favorite)
     this._favoriteService.addFavorite(this.favorite).subscribe(
       response => {
-        this.favorite = (<any>response).result
-        this._router.navigate(['/bookmark' + this.favorite._id])
+        console.log(response)
+        if(response) {
+          this.favorite = (<any>response).result
+          console.log(this._favoriteService)
+          this._router.navigate(['/bookmark' + this.favorite._id])
+        }
       },
       error => { this._errorHandler.printRequestError(error) }
     )    

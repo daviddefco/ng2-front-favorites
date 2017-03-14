@@ -30,7 +30,9 @@ export class FavoriteService {
     headers.append('Content-Type', 'application/json')
     return this._http.post(this.urlRestfulApi, json, { headers: headers })
       .map(response => {
-        response.json()
+        let favorite: Favorite
+        favorite = response.json().result
+        return favorite
       })
   }
 }
