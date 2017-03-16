@@ -1,0 +1,13 @@
+<div *ngIf="feedback != null" class="panel panel-{{ feedback.type }}">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      {{ feedback.title }}
+    </h3>
+  </div>
+  <div class="panel-body">
+    {{ feedback.message }}
+    <div class="dismiss pull-right">
+      <a (click)="onDismiss()">Dismiss</a>
+    </div>
+  </div>
+</div>

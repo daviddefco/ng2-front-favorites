@@ -13,7 +13,8 @@ import { ErrorHandlingService } from './shared/errors/error-handling.service';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { FavoriteAddComponent } from './favorites/favorite-add/favorite-add.component';
 import { FavoriteEditComponent } from './favorites/favorite-edit/favorite-edit.component';
-import { FavoriteDeleteComponent } from './favorites/favorite-delete/favorite-delete.component'
+import { FavoriteDeleteComponent } from './favorites/favorite-delete/favorite-delete.component';
+import { FeedbackDialogComponent } from './shared/feedback-dialog/feedback-dialog.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FavoriteDeleteComponent } from './favorites/favorite-delete/favorite-de
     SpinnerComponent,
     FavoriteAddComponent,
     FavoriteEditComponent,
-    FavoriteDeleteComponent
+    FavoriteDeleteComponent,
+    FeedbackDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -29,7 +29,7 @@ export class FavoriteService {
    * operation
    * @param id ID of the favorite being searched
    */
-  getFavorito(id:string) {
+  getFavorite(id:string) {
     return this._http.get(this.urlRestfulApi + '/' + id)
       .map(res => res.json().result).delay(1000) 
   }

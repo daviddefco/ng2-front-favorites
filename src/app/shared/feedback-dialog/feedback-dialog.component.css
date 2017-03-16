@@ -1,0 +1,9 @@
+.dismiss {
+    margin-top: 30px;
+    font-size: 1.2em;
+}
+
+.dismiss a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

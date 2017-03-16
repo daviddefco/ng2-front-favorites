@@ -34,7 +34,7 @@ export class FavoriteDetailComponent implements OnInit {
   getFavorite() {
     this._route.params.subscribe((params: Params) => {
       let idFavorite = params['id']
-      this._favoriteService.getFavorito(idFavorite).subscribe(
+      this._favoriteService.getFavorite(idFavorite).subscribe(
         response => {
           this.favorite = response
           this.visible = true    
