@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router'
 
-import { ErrorHandlingService } from '../../shared/error-handling.service'
+import { ErrorHandlingService } from '../../shared/errors/error-handling.service'
 import { FavoriteService } from '../favorite.service'
 import { Favorite } from '../favorite'
 
@@ -11,16 +11,18 @@ import { Favorite } from '../favorite'
   styleUrls: ['./favorite-add.component.css'],
   providers: [ FavoriteService ]
 })
+
 export class FavoriteAddComponent implements OnInit {
 
-  favorite: Favorite
-  title: string
+  public favorite: Favorite
+  public pageTitle: string
+
   constructor(
     private _favoriteService: FavoriteService,
     private _route: ActivatedRoute,
     private _router: Router,
     private _errorHandler: ErrorHandlingService
-  ) { this.title = "Add Favorite" }
+  ) { this.pageTitle = "Add Favorite" }
 
   ngOnInit() {
     this.favorite =  {
@@ -34,11 +36,9 @@ export class FavoriteAddComponent implements OnInit {
   onSubmit() {
     this._favoriteService.addFavorite(this.favorite).subscribe(
       response => {
-        console.log(response)
         if(response) {
-          this.favorite = (<any>response).result
-          console.log(this._favoriteService)
-          this._router.navigate(['/bookmark' + this.favorite._id])
+          this.favorite = response
+          this._router.navigate([`/bookmark/${ this.favorite._id }`])
         }
       },
       error => { this._errorHandler.printRequestError(error) }

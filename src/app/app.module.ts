@@ -9,10 +9,11 @@ import { FavoriteListComponent } from './favorites/favorite-list/favorite-list.c
 
 import { AlertModule } from 'ng2-bootstrap/alert';
 import { FavoriteDetailComponent } from './favorites/favorite-detail/favorite-detail.component'
-import { ErrorHandlingService } from './shared/error-handling.service';
+import { ErrorHandlingService } from './shared/errors/error-handling.service';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { FavoriteAddComponent } from './favorites/favorite-add/favorite-add.component';
-import { FavoriteEditComponent } from './favorites/favorite-edit/favorite-edit.component'
+import { FavoriteEditComponent } from './favorites/favorite-edit/favorite-edit.component';
+import { FavoriteDeleteComponent } from './favorites/favorite-delete/favorite-delete.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FavoriteEditComponent } from './favorites/favorite-edit/favorite-edit.c
     FavoriteDetailComponent,
     SpinnerComponent,
     FavoriteAddComponent,
-    FavoriteEditComponent
+    FavoriteEditComponent,
+    FavoriteDeleteComponent
   ],
   imports: [
     BrowserModule,

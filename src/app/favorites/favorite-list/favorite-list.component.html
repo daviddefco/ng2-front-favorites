@@ -13,13 +13,16 @@
       <a type="button" class="btn btn-default" href="{{ favorite.url }}" target="_blank">
         <i class="glyphicon glyphicon-link"></i>
       </a>
-      <a type="button" class="btn btn-default" [routerLink]="[ '/bookmark', favorite._id ]">
+      <a type="button" class="btn btn-default" 
+      [routerLink]="[ '/bookmark', favorite._id ]">
         <i class="glyphicon glyphicon-eye-open"></i>
       </a>
-      <a type="button" class="btn btn-default">
+      <a type="button" class="btn btn-default"
+      [routerLink]="[ '/favorite-edit', favorite._id ]">
         <i class="glyphicon glyphicon-pencil"></i>
       </a>
-      <a type="button" class="btn btn-danger">
+      <a type="button" class="btn btn-danger"
+      [routerLink]="[ '/favorite-delete', favorite._id ]">
         <i class="glyphicon glyphicon-trash"></i>
       </a>
     </div>

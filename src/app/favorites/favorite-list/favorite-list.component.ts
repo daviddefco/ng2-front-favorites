@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Router, ActivatedRoute, Params } from '@angular/router'
 
-import { ErrorHandlingService } from '../../shared/error-handling.service'
+import { ErrorHandlingService } from '../../shared/errors/error-handling.service'
 import { FavoriteService } from '../favorite.service'
 import { Favorite } from '../favorite'
 
@@ -30,12 +30,8 @@ export class FavoriteListComponent implements OnInit {
     this._favoriteService.getFavoritos()
       .subscribe(
         result => {
-           // simulation of a slow interaction to show slider
-          setTimeout(() => {
-            console.log(result)
-            this.favorites = result.result
-            this.visible =  true
-          }, 1500)  
+           this.favorites = result.result
+           this.visible =  true
         },
         error => {
           this._errorHandler.printRequestError(error)
