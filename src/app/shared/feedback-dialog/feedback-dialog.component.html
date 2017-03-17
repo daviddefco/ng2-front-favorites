@@ -1,11 +1,12 @@
-<div *ngIf="feedback != null" class="panel panel-{{ feedback.type }}">
+<div *ngIf="_feedbackHandler.hasAvailableFeedback()" 
+class="panel panel-{{ _feedbackHandler.feedback.type }}">
   <div class="panel-heading">
     <h3 class="panel-title">
-      {{ feedback.title }}
+      {{ _feedbackHandler.feedback.title }}
     </h3>
   </div>
   <div class="panel-body">
-    {{ feedback.message }}
+    {{ _feedbackHandler.feedback.message }}
     <div class="dismiss pull-right">
       <a (click)="onDismiss()">Dismiss</a>
     </div>

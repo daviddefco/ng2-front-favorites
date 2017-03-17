@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router'
 
-import { ErrorHandlingService } from '../../shared/errors/error-handling.service'
 import { FavoriteService } from '../favorite.service'
 import { Favorite } from '../favorite'
+
+import { FeedbackDialogComponent } from '../../shared/feedback-dialog/feedback-dialog.component'
+import { FeedbackHandlerService } from '../../shared/feedback-dialog/feedback-handler.service'
 
 @Component({
   selector: 'app-favorite-add',
@@ -21,8 +23,11 @@ export class FavoriteAddComponent implements OnInit {
     private _favoriteService: FavoriteService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _errorHandler: ErrorHandlingService
-  ) { this.pageTitle = "Add Favorite" }
+    private _feedbackHandler: FeedbackHandlerService
+  ) { 
+    this.pageTitle = "Add Favorite" 
+    // this._feedbackHandler.dismissFeedback()
+  }
 
   ngOnInit() {
     this.favorite =  {
@@ -39,9 +44,18 @@ export class FavoriteAddComponent implements OnInit {
         if(response) {
           this.favorite = response
           this._router.navigate([`/bookmark/${ this.favorite._id }`])
+          this._feedbackHandler.reportSuccess(
+            "Successful Creation of a Favorite",
+            `Favorite ${ this.favorite.title } was succesfully created.`
+          )          
         }
       },
-      error => { this._errorHandler.printRequestError(error) }
+      error => { 
+        this._feedbackHandler.reportError(
+          "Error in the Creation of a Favorite",
+          `Favorite ${ this.favorite.title } could not be created. Error in server call: ${ error }.`
+        )
+      }
     )    
   }
 

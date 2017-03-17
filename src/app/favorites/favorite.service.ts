@@ -54,7 +54,8 @@ export class FavoriteService {
   updateFavorite(favorite: Favorite) {
     let json = JSON.stringify(favorite)
     return this._http.put(
-      this.urlRestfulApi, json, { headers: this.headers() }
+      this.urlRestfulApi + '/' + favorite._id, json, 
+      { headers: this.headers() }
     ).map(response => response.json().result._id)    
   }
 

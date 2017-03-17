@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit  } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router'
 
 import { FavoriteService } from '../favorite.service'
 import { Favorite } from '../favorite'
 import { ErrorHandlingService } from '../../shared/errors/error-handling.service'
 import { SpinnerComponent } from '../../shared/spinner/spinner.component'
+
+import { FeedbackHandlerService } from '../../shared/feedback-dialog/feedback-handler.service'
+import { FeedbackDialogComponent } from '../../shared/feedback-dialog/feedback-dialog.component'
 
 @Component({
   selector: 'app-favorite-detail',
@@ -13,22 +16,29 @@ import { SpinnerComponent } from '../../shared/spinner/spinner.component'
   providers: [ FavoriteService ]
 })
 
-export class FavoriteDetailComponent implements OnInit {
+export class FavoriteDetailComponent implements OnInit, AfterViewInit  {
 
-  public favorite: Favorite
-  public visible: boolean
+  favorite: Favorite
+  visible: boolean
+  @ViewChild(FeedbackDialogComponent) feedbackChild: FeedbackDialogComponent
 
   constructor(
     private _favoriteService: FavoriteService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _errorHandler: ErrorHandlingService 
+    private _errorHandler: ErrorHandlingService,
+    private _feedbackHandler: FeedbackHandlerService
   ) { 
-    this.visible = false 
+    this.visible = false
+    // this._feedbackHandler.dismissFeedback()
   }
 
   ngOnInit() {    
     this.getFavorite()
+  }
+
+  ngAfterViewInit() {
+    this._feedbackHandler.hasBeenShown = true
   }
 
   getFavorite() {

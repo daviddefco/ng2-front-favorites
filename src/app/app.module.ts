@@ -10,6 +10,7 @@ import { FavoriteListComponent } from './favorites/favorite-list/favorite-list.c
 import { AlertModule } from 'ng2-bootstrap/alert';
 import { FavoriteDetailComponent } from './favorites/favorite-detail/favorite-detail.component'
 import { ErrorHandlingService } from './shared/errors/error-handling.service';
+import { FeedbackHandlerService } from './shared/feedback-dialog/feedback-handler.service';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { FavoriteAddComponent } from './favorites/favorite-add/favorite-add.component';
 import { FavoriteEditComponent } from './favorites/favorite-edit/favorite-edit.component';
@@ -37,7 +38,8 @@ import { FeedbackDialogComponent } from './shared/feedback-dialog/feedback-dialo
   ],
   providers: [ 
     appRoutingProviders,
-    ErrorHandlingService
+    ErrorHandlingService,
+    FeedbackHandlerService
   ],
   bootstrap: [ 
     AppComponent    
