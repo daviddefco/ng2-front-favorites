@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterContentInit,  Input } 
+from '@angular/core';
 import { Feedback } from './feedback'
 import { FeedbackHandlerService } from './feedback-handler.service'
 
@@ -14,12 +15,18 @@ export class FeedbackDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(this._feedbackHandler.feedback)
   }
 
   ngOnDestroy() {
     if (this._feedbackHandler.hasBeenShown) {
       this._feedbackHandler.dismissFeedback()
+      this._feedbackHandler.hasBeenShown = false
+    }  
+  }
+
+  ngAfterViewInit() {
+    if (this._feedbackHandler.hasAvailableFeedback()) {
+      this._feedbackHandler.hasBeenShown = true
     }  
   }
 

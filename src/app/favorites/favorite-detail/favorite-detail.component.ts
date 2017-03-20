@@ -3,7 +3,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router'
 
 import { FavoriteService } from '../favorite.service'
 import { Favorite } from '../favorite'
-import { ErrorHandlingService } from '../../shared/errors/error-handling.service'
 import { SpinnerComponent } from '../../shared/spinner/spinner.component'
 
 import { FeedbackHandlerService } from '../../shared/feedback-dialog/feedback-handler.service'
@@ -26,7 +25,6 @@ export class FavoriteDetailComponent implements OnInit, AfterViewInit  {
     private _favoriteService: FavoriteService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _errorHandler: ErrorHandlingService,
     private _feedbackHandler: FeedbackHandlerService
   ) { 
     this.visible = false
@@ -53,7 +51,10 @@ export class FavoriteDetailComponent implements OnInit, AfterViewInit  {
           }
         },
         error => {
-          this._errorHandler.printRequestError(error)          
+          this._feedbackHandler.reportError(
+            `Error while Retrieving Favorite ${ this.favorite.title }`,
+            `Could not retrieve the favorite ${ this.favorite.title }. Error in server call: ${ error }.`
+          )          
         }
       )
     })

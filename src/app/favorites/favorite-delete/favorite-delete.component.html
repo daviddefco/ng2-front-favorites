@@ -1,8 +1,13 @@
-<div class="well">
-  <h4 class="modal-title">Delete Favorite {{ favorite.title }}</h4>
+<div *ngIf="visible" class="well">
+  <h4>Delete Favorite {{ favorite.title }}</h4>
   <p>Are you sure you want to delete favorite '{{ favorite.title }}'?. this operation can't be undone.</p>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">No, I made a mistake</button>
-    <button type="button" class="btn btn-danger">Yes, delete it</button>
+    <button type="button" class="btn btn-default" (click)="goHome()">
+      No, I made a mistake
+    </button>
+    <button type="button" class="btn btn-danger" 
+    (click)="deleteFavorite()">Yes, delete it</button>
   </div>
 </div>
+
+<app-feedback-dialog></app-feedback-dialog>

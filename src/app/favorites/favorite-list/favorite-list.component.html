@@ -4,6 +4,8 @@
 
 <app-spinner *ngIf="!visible"></app-spinner>
 
+<app-feedback-dialog></app-feedback-dialog>
+
 <ul *ngIf="visible" class="list-group">
   <li *ngFor="let favorite of favorites" class="list-group-item">
     <h4>{{ favorite.title }}</h4>

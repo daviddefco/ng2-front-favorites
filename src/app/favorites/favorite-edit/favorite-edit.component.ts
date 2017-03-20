@@ -7,8 +7,6 @@ import { FeedbackHandlerService } from '../../shared/feedback-dialog/feedback-ha
 import { Favorite } from '../favorite'
 import { FavoriteService } from '../favorite.service'
 
-import { ErrorHandlingService } from '../../shared/errors/error-handling.service'
-
 @Component({
   selector: 'app-favorite-edit',
   templateUrl: '../favorite-add/favorite-add.component.html',
@@ -27,7 +25,6 @@ export class FavoriteEditComponent implements OnInit {
     private _favoriteService: FavoriteService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _errorHandler: ErrorHandlingService,
     private _feedbackHandler: FeedbackHandlerService
   ) { 
     this.pageTitle = "Edit Favorite" 
@@ -58,7 +55,10 @@ export class FavoriteEditComponent implements OnInit {
           }
         },
         error => {
-          this._errorHandler.printRequestError(error)          
+          this._feedbackHandler.reportError(
+            "Error in the Edition of a Favorite",
+            `Favorite ${ this.favorite.title } could not be edited. Error in server call: ${ error }.`
+          )
         }
       )
     })    

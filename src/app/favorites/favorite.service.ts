@@ -59,6 +59,11 @@ export class FavoriteService {
     ).map(response => response.json().result._id)    
   }
 
+  deleteFavorite(id: string) {
+    return this._http.delete(this.urlRestfulApi + '/' + id)
+      .map(res => res.json().result)
+  }
+
   private headers(): Headers {
     let headers: Headers = new Headers()
     headers.append('Content-Type', 'application/json')

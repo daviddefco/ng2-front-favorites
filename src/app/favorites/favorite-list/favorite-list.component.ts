@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core'
 import { Router, ActivatedRoute, Params } from '@angular/router'
 
-import { ErrorHandlingService } from '../../shared/errors/error-handling.service'
 import { FavoriteService } from '../favorite.service'
 import { Favorite } from '../favorite'
+
+import { FeedbackDialogComponent } from '../../shared/feedback-dialog/feedback-dialog.component'
+import { FeedbackHandlerService } from '../../shared/feedback-dialog/feedback-handler.service'
 
 @Component({
   selector: 'app-favorite-list',
@@ -20,7 +22,7 @@ export class FavoriteListComponent implements OnInit {
 
   constructor(
     private _favoriteService: FavoriteService,
-    private _errorHandler: ErrorHandlingService 
+    private _feedbackHandler: FeedbackHandlerService
   ) { 
     this.title = 'Favorite Bookmark List'
     this.visible = false
@@ -34,7 +36,10 @@ export class FavoriteListComponent implements OnInit {
            this.visible =  true
         },
         error => {
-          this._errorHandler.printRequestError(error)
+          this._feedbackHandler.reportError(
+            "Error while Retrieving Favorite List",
+            `Could not retrieve the favorite list. Error in server call: ${ error }.`
+          )          
         }
       )
   }
